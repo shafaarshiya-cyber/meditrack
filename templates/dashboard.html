@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MediTrack Dashboard</title>
+
+<style>
+body{
+font-family:Arial;
+background:#eef5ff;
+padding:30px;
+}
+
+.card{
+background:white;
+padding:20px;
+margin:10px;
+display:inline-block;
+width:220px;
+border-radius:10px;
+box-shadow:0 0 10px #ddd;
+}
+
+table{
+width:100%;
+background:white;
+border-collapse:collapse;
+}
+
+th,td{
+padding:12px;
+border:1px solid #ddd;
+}
+
+a{
+text-decoration:none;
+color:white;
+}
+
+.btn{
+background:#007bff;
+padding:10px;
+border-radius:5px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>MediTrack Dashboard</h1>
+
+<div class="card">
+<h2>{{ total }}</h2>
+<p>Total Equipment</p>
+</div>
+
+{% for item in by_status %}
+
+<div class="card">
+<h2>{{ item.count }}</h2>
+<p>{{ item.status }}</p>
+</div>
+
+{% endfor %}
+
+<br><br>
+
+<a href="/equipment" class="btn">
+Equipment List
+</a>
+
+<h2>Overdue Maintenance</h2>
+
+<table>
+
+<tr>
+<th>Name</th>
+<th>Serial</th>
+<th>Due Date</th>
+</tr>
+
+{% for item in overdue %}
+
+<tr>
+
+<td>{{ item.equipment_name }}</td>
+
+<td>{{ item.serial_number }}</td>
+
+<td>{{ item.next_due_date }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+
+<body>
+
+<h1>Equipment List</h1>
+
+<a href="/equipment/new">
+Add Equipment
+</a>
+
+<table border="1">
+
+<tr>
+
+<th>ID</th>
+
+<th>Name</th>
+
+<th>Department</th>
+
+<th>Status</th>
+
+</tr>
+
+{% for item in equipment %}
+
+<tr>
+
+<td>{{ item.equipment_id }}</td>
+
+<td>
+
+<a href="/equipment/{{item.equipment_id}}">
+{{ item.equipment_name }}
+</a>
+
+</td>
+
+<td>{{ item.department }}</td>
+
+<td>{{ item.status }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+
+</html>
