@@ -1,54 +1,147 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Add Maintenance Log</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+}
+
+.container{
+    width:100%;
+    max-width:650px;
+    background:white;
+    padding:35px;
+    border-radius:14px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.1);
+}
+
+h1{
+    text-align:center;
+    color:#1e3a8a;
+    margin-bottom:30px;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+label{
+    font-weight:bold;
+    color:#444;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    font-size:15px;
+}
+
+input:focus,
+textarea:focus{
+    outline:none;
+    border-color:#2563eb;
+    box-shadow:0 0 5px rgba(37,99,235,0.3);
+}
+
+textarea{
+    resize:vertical;
+    min-height:100px;
+}
+
+button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:14px;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+</style>
+
+</head>
 
 <body>
 
-<h1>
-Add Maintenance Log
-</h1>
+<div class="container">
+
+<h1>Add Maintenance Log</h1>
 
 <form method="POST">
+
+<label>Maintenance Date</label>
 
 <input
 type="date"
 name="maintenance_date"
 required>
 
-<br><br>
+<label>Technician Name</label>
 
 <input
+type="text"
 name="technician_name"
-placeholder="Technician"
+placeholder="Enter technician name"
 required>
 
-<br><br>
+<label>Issue Reported</label>
 
 <textarea
 name="issue_reported"
-placeholder="Issue">
+placeholder="Describe the issue">
 </textarea>
 
-<br><br>
+<label>Resolution Notes</label>
 
 <textarea
 name="resolution_notes"
-placeholder="Resolution">
+placeholder="Enter resolution details">
 </textarea>
 
-<br><br>
+<label>Next Due Date</label>
 
 <input
 type="date"
 name="next_due_date">
 
-<br><br>
-
-<button>
-Save
+<button type="submit">
+Save Maintenance Log
 </button>
 
 </form>
+
+</div>
 
 </body>
 

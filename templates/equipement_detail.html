@@ -1,82 +1,182 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<html>
+<title>Equipment Details</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+    padding:40px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+h1{
+    color:#1e3a8a;
+    margin-bottom:20px;
+}
+
+.info{
+    margin-bottom:12px;
+    font-size:18px;
+}
+
+.info strong{
+    color:#333;
+}
+
+form{
+    margin-top:20px;
+    margin-bottom:25px;
+}
+
+select{
+    padding:10px;
+    width:250px;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+
+button{
+    padding:10px 18px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    margin-left:10px;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.add-btn{
+    display:inline-block;
+    margin-bottom:25px;
+    text-decoration:none;
+    background:#10b981;
+    color:white;
+    padding:10px 16px;
+    border-radius:6px;
+}
+
+.add-btn:hover{
+    background:#059669;
+}
+
+h2{
+    margin-bottom:15px;
+    color:#111827;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#2563eb;
+    color:white;
+    padding:12px;
+}
+
+td{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+}
+
+tr:hover{
+    background:#f8fafc;
+}
+
+.status{
+    color:#ef4444;
+    font-weight:bold;
+}
+
+</style>
+
+</head>
 
 <body>
 
-<h1>
+<div class="container">
 
-{{ equipment.equipment_name }}
+<h1>{{ equipment.equipment_name }}</h1>
 
-</h1>
-
-<p>
-Serial:
+<p class="info">
+<strong>Serial:</strong>
 {{ equipment.serial_number }}
 </p>
 
-<p>
-Department:
+<p class="info">
+<strong>Department:</strong>
 {{ equipment.department }}
 </p>
 
-<p>
-Status:
+<p class="info">
+<strong>Status:</strong>
+<span class="status">
 {{ equipment.status }}
+</span>
 </p>
 
 
-<form
-method="POST"
-action="/equipment/{{equipment.equipment_id}}/status"
->
+<form method="POST"
+action="/equipment/{{equipment.equipment_id}}/status">
 
 <select name="status">
 
-<option>
-Active
-</option>
+<option>Active</option>
 
-<option>
-Under Maintenance
-</option>
+<option>Under Maintenance</option>
 
-<option>
-Decommissioned
-</option>
+<option>Decommissioned</option>
 
 </select>
 
-<button>
+<button type="submit">
 Update
 </button>
 
 </form>
 
-<br>
 
-<a
-href="/equipment/{{equipment.equipment_id}}/log/new"
->
+<a class="add-btn"
+href="/equipment/{{equipment.equipment_id}}/log/new">
 
 Add Maintenance
 
 </a>
 
-<h2>
-Maintenance History
-</h2>
 
-<table border="1">
+<h2>Maintenance History</h2>
+
+<table>
 
 <tr>
-
 <th>Date</th>
-
 <th>Technician</th>
-
 <th>Issue</th>
-
 </tr>
 
 {% for log in logs %}
@@ -100,6 +200,8 @@ Maintenance History
 {% endfor %}
 
 </table>
+
+</div>
 
 </body>
 

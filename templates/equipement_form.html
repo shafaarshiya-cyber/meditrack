@@ -1,62 +1,148 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Add Equipment</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+}
+
+.container{
+    width:100%;
+    max-width:650px;
+    background:white;
+    padding:35px;
+    border-radius:14px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.1);
+}
+
+h1{
+    text-align:center;
+    color:#1e3a8a;
+    margin-bottom:30px;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+label{
+    color:#374151;
+    font-weight:bold;
+}
+
+input,
+select{
+    width:100%;
+    padding:12px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    font-size:15px;
+}
+
+input:focus,
+select:focus{
+    outline:none;
+    border-color:#2563eb;
+    box-shadow:0 0 6px rgba(37,99,235,0.25);
+}
+
+button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:14px;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+</style>
+
+</head>
 
 <body>
+
+<div class="container">
 
 <h1>Add Equipment</h1>
 
 <form method="POST">
 
+<label>Equipment Name</label>
+
 <input
+type="text"
 name="equipment_name"
-placeholder="Equipment Name"
+placeholder="Enter equipment name"
 required>
 
-<br><br>
+<label>Serial Number</label>
 
 <input
+type="text"
 name="serial_number"
-placeholder="Serial Number"
+placeholder="Enter serial number"
 required>
 
-<br><br>
+<label>Department</label>
 
 <input
+type="text"
 name="department"
-placeholder="Department">
+placeholder="Enter department">
 
-<br><br>
+<label>Purchase Date</label>
 
 <input
 type="date"
 name="purchase_date">
 
-<br><br>
+<label>Status</label>
 
 <select name="status">
 
-<option>
-Active
-</option>
+<option>Active</option>
 
-<option>
-Under Maintenance
-</option>
+<option>Under Maintenance</option>
 
-<option>
-Decommissioned
-</option>
+<option>Decommissioned</option>
 
 </select>
 
-<br><br>
-
-<button>
-Save
+<button type="submit">
+Save Equipment
 </button>
 
 </form>
+
+</div>
 
 </body>
 

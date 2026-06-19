@@ -1,28 +1,124 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Equipment List</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+    padding:40px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+h1{
+    color:#1e3a8a;
+    margin-bottom:25px;
+}
+
+.add-btn{
+    display:inline-block;
+    padding:10px 18px;
+    background:#10b981;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    margin-bottom:20px;
+    transition:0.3s;
+}
+
+.add-btn:hover{
+    background:#059669;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    overflow:hidden;
+    border-radius:10px;
+}
+
+th{
+    background:#2563eb;
+    color:white;
+    padding:14px;
+    text-align:left;
+}
+
+td{
+    padding:14px;
+    border-bottom:1px solid #ddd;
+}
+
+tr:hover{
+    background:#f9fafb;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+.status{
+    font-weight:bold;
+    color:#dc2626;
+}
+
+.empty{
+    text-align:center;
+    padding:20px;
+    color:#666;
+}
+
+</style>
+
+</head>
 
 <body>
 
+<div class="container">
+
 <h1>Equipment List</h1>
 
-<a href="/equipment/new">
-Add Equipment
+<a class="add-btn" href="/equipment/new">
++ Add Equipment
 </a>
 
-<table border="1">
+<table>
 
 <tr>
-
 <th>ID</th>
-
 <th>Name</th>
-
 <th>Department</th>
-
 <th>Status</th>
-
 </tr>
+
+{% if equipment %}
 
 {% for item in equipment %}
 
@@ -31,22 +127,36 @@ Add Equipment
 <td>{{ item.equipment_id }}</td>
 
 <td>
-
 <a href="/equipment/{{item.equipment_id}}">
 {{ item.equipment_name }}
 </a>
-
 </td>
 
-<td>{{ item.department }}</td>
+<td>
+{{ item.department }}
+</td>
 
-<td>{{ item.status }}</td>
+<td class="status">
+{{ item.status }}
+</td>
 
 </tr>
 
 {% endfor %}
 
+{% else %}
+
+<tr>
+<td colspan="4" class="empty">
+No equipment available
+</td>
+</tr>
+
+{% endif %}
+
 </table>
+
+</div>
 
 </body>
 
